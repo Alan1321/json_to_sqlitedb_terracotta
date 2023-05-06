@@ -1,14 +1,24 @@
 import sys
 from sqlite import sqlite
+from validate import validate
+from utils import info
 
-#command line arguments
-print(sys.argv)
+KEY_NAMES = ('type', 'date', 'band')
+PATH = 'path'
+DRIVER_NAME = None
+JSON_FILE_PATH = None
+OPTION = None
 
-#arguments to accept
-#1.driver_name
-#2. path to json file
+if len(sys.argv) != 4:
+    info()
+    sys.exit()
 
-print("#Syntax: python3 main.py <driver_name> <path_to_json_file>")
-print('#JSON argument needed in the format: \n[{\n\t"type":"",\n\t"date":"",\n\t"band":"",\n\t"path":""\n}]')
+OPTION = sys.argv[1]
+DRIVER_NAME = sys.argv[2]
+JSON_FILE_PATH = sys.argv[3]
 
-sqlite('raster1.sqlite', 'test.json')
+validate(OPTION, DRIVER_NAME, JSON_FILE_PATH, KEY_NAMES, PATH)
+print("Validation Complete")
+
+sqlite(OPTION, DRIVER_NAME, JSON_FILE_PATH, KEY_NAMES, PATH)
+print(f"{DRIVER_NAME} operation {OPTION} complete.")
