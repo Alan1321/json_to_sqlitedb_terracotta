@@ -1,0 +1,14 @@
+[
+    {
+        "type":"HS3",
+        "date":"20141015",
+        "band":"GOnzalo",
+        "path":"s3://ghrc-cog/HS3/AE20141015.Gonzalo.loc.nc.tif"
+    },
+    {
+        "type":"TRMM_LIS",
+        "date":"2011_10_24",
+        "band":"FULL",
+        "path":"s3://ghrc-cog/TRMM-LIS/VHRFC_LIS_FRD_co.tif"
+    }
+]
