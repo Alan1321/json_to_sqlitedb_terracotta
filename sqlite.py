@@ -9,7 +9,6 @@ class sqlite():
         self.option = option
         self.key_names = key_names
         self.path = path
-        self.json_data = read_json(self.json_file_path)
         self.start()
 
     def start(self):
@@ -27,15 +26,18 @@ class sqlite():
             print(syntax())
             sys.exit()
 
-        for data in self.json_data:
-            keys, raster_file = self.separate_key_filename(data)
-            driver.insert(keys, raster_file)
+        for file in self.json_file_path:                    
+            for data in read_json(file):
+                keys, raster_file = self.separate_key_filename(data)
+                driver.insert(keys, raster_file)
 
     def append_db(self):
         driver = tc.get_driver(self.driver_name)
-        for data in self.json_data:
-            keys, raster_file = self.separate_key_filename(data)
-            driver.insert(keys, raster_file)
+
+        for file in self.json_file_path:        
+            for data in read_json(file):
+                keys, raster_file = self.separate_key_filename(data)
+                driver.insert(keys, raster_file)
 
     def separate_key_filename(self, data):
         keys = (data[self.key_names[0]],data[self.key_names[1]],data[self.key_names[2]])

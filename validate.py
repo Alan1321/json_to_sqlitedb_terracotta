@@ -26,13 +26,14 @@ class validate():
             sys.exit()
 
     def validate_json_file(self):
-        data = read_json(self.json_file_path)
-        try:
-            for d in data:
-                arg1 = d[self.key_names[0]]
-                arg2 = d[self.key_names[1]]
-                arg3 = d[self.key_names[2]]
-        except:
-            print("\n\nFAILED validate.py LINE 36 -- Make sure of all the json data format.")
-            print(json_format())
-            sys.exit()
+        for file in self.json_file_path:
+            data = read_json(file)
+            try:
+                for d in data:
+                    arg1 = d[self.key_names[0]]
+                    arg2 = d[self.key_names[1]]
+                    arg3 = d[self.key_names[2]]
+            except:
+                print("\n\nFAILED validate.py LINE 36 -- Make sure of all the json data format.")
+                print(json_format())
+                sys.exit()
