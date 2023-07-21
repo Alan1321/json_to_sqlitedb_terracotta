@@ -24,5 +24,3 @@ print("Validation Complete")
 
 sqlite(OPTION, DRIVER_NAME, JSON_FILE_PATH, KEY_NAMES, PATH)
 print(f"{DRIVER_NAME} operation {OPTION} complete.")
-
-['main.py' ,'raster.sqlite','a.json' ,'b.json' ,'c.json']
